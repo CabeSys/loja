@@ -1,0 +1,43 @@
+<ui:composition template="templates/template_administracao.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"                                                        
+                xmlns:h="http://java.sun.com/jsf/html"                                                        
+                xmlns:ui="http://java.sun.com/jsf/facelets"                                                                                                              
+                xmlns:f="http://java.sun.com/jsf/core">
+    
+    <ui:define name="titulo">Categorias</ui:define>
+    <ui:define name="conteudo"> 
+    <h:form>
+        <h1>Categorias</h1>
+        <h:messages globalOnly="true" />
+        <br />
+        <h:commandButton action="categoria" value="Nova Categoria" />
+
+        <h:dataTable value="#{categoriaBean.categorias}" var="categoria">            
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                #{categoria.nome}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Descrição</f:facet>
+                #{categoria.descricao}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Seção</f:facet>
+                #{categoria.secao.nome}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Ações</f:facet>
+                <h:commandLink value="Alterar" action="categoria">
+                    <f:param name="id" value="#{categoria.id}" />
+                </h:commandLink>                    
+                / 
+                <h:commandLink value="Excluir" action="#{categoriaBean.excluir(categoria.id)}" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    </ui:define>
+    
+</ui:composition>

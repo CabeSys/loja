@@ -1,0 +1,26 @@
+<ui:composition template="templates/template_administracao.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"                                                        
+                xmlns:h="http://java.sun.com/jsf/html"                                                        
+                xmlns:ui="http://java.sun.com/jsf/facelets"                                                                                                              
+                xmlns:f="http://java.sun.com/jsf/core">
+    
+    <ui:define name="titulo">Seção</ui:define>
+    <ui:define name="conteudo">
+        <h:form id="form">
+            <h1>Seção</h1>
+            <h:messages globalOnly="true" />
+            <h:inputHidden  value="#{secaoBean.secao.id}" />
+        
+            <h:outputLabel value="Nome: " />
+            <h:inputText value="#{secaoBean.secao.nome}" required="true" requiredMessage="Informe o nome" />            
+            <br />
+            
+            <h:outputLabel value="Descrição: " />
+            <h:inputText value="#{secaoBean.secao.descricao}" required="true" requiredMessage="Informe a descrição" />            
+            <br />
+            
+            <h:commandButton action="#{secaoBean.salvar()}" value="Salvar" />            
+        </h:form>
+    </ui:define>
+    
+</ui:composition>

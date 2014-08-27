@@ -1,0 +1,32 @@
+<ui:composition template="templates/template_administracao.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"                                                        
+                xmlns:h="http://java.sun.com/jsf/html"                                                        
+                xmlns:ui="http://java.sun.com/jsf/facelets"                                                                                                              
+                xmlns:f="http://java.sun.com/jsf/core">
+    
+    <ui:define name="titulo">Categoria</ui:define>
+    <ui:define name="conteudo">
+        <h:form id="form">
+            <h1>Categoria</h1>
+            <h:messages globalOnly="true" />
+            <h:inputHidden  value="#{categoriaBean.categoria.id}" />
+        
+            <h:outputLabel value="Nome: " />
+            <h:inputText value="#{categoriaBean.categoria.nome}" required="true" requiredMessage="Informe o nome" />            
+            <br />
+            
+            <h:outputLabel value="Descrição: " />
+            <h:inputText value="#{categoriaBean.categoria.descricao}" required="true" requiredMessage="Informe a descrição" />            
+            <br />
+            
+            <h:outputLabel value="Seção: " />
+            <h:selectOneMenu value="#{categoriaBean.categoria.secao}" converter="secaoConverter">
+                <f:selectItems value="#{categoriaBean.secoes}" var="secao" itemLabel="#{secao.nome}" />
+            </h:selectOneMenu>            
+            <br />
+            
+            <h:commandButton action="#{categoriaBean.salvar()}" value="Salvar" />            
+        </h:form>
+    </ui:define>
+    
+</ui:composition>
